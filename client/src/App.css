@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+.App {
+  display: flex;
+  flex-flow: column;
+}
+
+.header-container {
+  display: block;
+  position: fixed;
+  width: 100%;
+}
+
+.header {
+  font-size: 1.2em;
+  border: none;
+  display: flex;
+  flex: 1 auto;
+  flex-wrap: nowrap;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  padding: 0.5em 0.2em 0.1em 0.5em;
+  background-color: #3b3d41;
+  color: #e5eaee;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.title-link {
+  text-decoration: none;
+}
+
+.title-link:visited {
+  color: #e5eaee
+}
+
+.subtitle {
+  font-size: 0.7em;
+  font-weight: normal;
+  font-family: 'Reenie Beanie', cursive;
+  padding-left: 0.1em;;
+}
+
+.moreFaces {
+  color: #9f9e9c;
+  cursor: pointer;
+  font-size: 0.8em;
+  justify-content: flex-end;
+}
+
+/*Body*/
+/*============================*/
+.container {
+  flex: 1;
+  padding: 1em;
+  margin-top: 1em;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.images {
+  align-items: center;
+  height: 90%;
+  width: 90%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.images {
+  display: flex;
+  flex-flow: column;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  border: 0.4em solid black;
+  border-style: outset;
+}
+
+.image-title {
+  color: #444546;
+  align-self: baseline;
+  font-size: 1em;
+}
+
+.description {
+  font-size: 0.8em;
+}
