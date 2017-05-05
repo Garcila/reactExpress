@@ -7,26 +7,26 @@ import Gallery from './Gallery';
 
 class App extends Component {
   state = {
-      users: [],
+      images: [],
       singleImage: true,
       allOrOne: 'all'
   };
 
   componentDidMount() {
-    fetch('/users')
+    fetch('/images')
       .then(res => res.json())
-      .then(users => this.setState({ users }));
+      .then(images => this.setState({ images }));
   }
 
   showGallery() {
     if (this.state.singleImage) {
       return (
         <div>
-          <Daily users={this.state.users} />
+          <Daily images={this.state.images} />
         </div>
       );
     }
-    return <Gallery users={this.state.users} />;
+    return <Gallery images={this.state.images} />;
   }
   changeView() {
     this.setState({ singleImage: !this.state.singleImage });

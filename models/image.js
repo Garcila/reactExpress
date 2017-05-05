@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const imageSchema = new mongoose.Schema({
   title: String,
   image: String,
   description: String,
   created: { type: Date, default: Date.now }
 });
 
-const User = mongoose.model('User', userSchema);
+const Image = mongoose.model('Image', imageSchema);
 
-module.exports = User;
+module.exports = Image;

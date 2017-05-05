@@ -3,17 +3,17 @@ import Image from './Image';
 
 class Gallery extends Component {
   render() {
-    const { users } = this.props;
+    const { images } = this.props;
     return (
         <div className='container'>
-          <ul className='list-of-users'>
+          <ul className='list-of-images'>
             {
               Object
-              .keys(users)
+              .keys(images)
               .map(key =>
                 <Image
                   key={key}
-                  details={users[key]}
+                  details={images[key]}
                 />)
             }
           </ul>
