@@ -9,15 +9,13 @@ import Image from './Image';
         <ul className='list-of-images'>
           <div className="App">
             {
-              Object
-              .keys(images)
-              .map(key => {
-                return (key === `${randomNumber}`) ?
+              images.map((image, index) => {
+                return (index === randomNumber) ?
                   <Image
-                    key={key}
-                    details={images[key]}
-                  /> :
-                '';
+                    key={index}
+                    details={image}
+                  />
+                  : '';
               })
             }
           </div>

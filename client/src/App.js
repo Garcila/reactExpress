@@ -8,8 +8,7 @@ import Gallery from './Gallery';
 class App extends Component {
   state = {
       images: [],
-      singleImage: true,
-      allOrOne: 'all'
+      singleImage: true
   };
 
   componentDidMount() {
@@ -30,10 +29,6 @@ class App extends Component {
   }
   changeView() {
     this.setState({ singleImage: !this.state.singleImage });
-    if (this.state.allOrOne === 'all') {
-      return this.setState({ allOrOne: '1' });
-    }
-    return this.setState({ allOrOne: 'all' });
   }
 
   render() {
@@ -44,7 +39,7 @@ class App extends Component {
             changeView={this.changeView.bind(this)}
             title={'Faces...'}
             subtitle={'My family doesn\'t get'}
-            go={this.state.allOrOne}
+            go={this.state.singleImage ? 'all' : '1'}
           />
         </div>
         {this.showGallery()}

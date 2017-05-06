@@ -6,17 +6,18 @@ const Gallery = ({ images }) => {
     <div className='container'>
       <ul className='list-of-images'>
         {
-          Object
-          .keys(images)
-          .map(key =>
-            <Image
-              key={key}
-              details={images[key]}
-            />)
+          images.map((image, index) => {
+            return (
+              <Image
+                key={index}
+                details={image}
+              />
+            );
+          })
         }
       </ul>
     </div>
-    );
+  );
 };
 
-export default Gallery;
+        export default Gallery;
