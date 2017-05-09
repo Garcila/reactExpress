@@ -37,8 +37,6 @@ class App extends Component {
         <div className='header-container'>
           <HeaderJs
             changeView={this.changeView.bind(this)}
-            title={'Faces...'}
-            subtitle={'My family doesn\'t get'}
             go={this.state.singleImage ? 'all' : '1'}
           />
         </div>
