@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 import HeaderJs from './common/HeaderJs';
@@ -13,9 +14,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch('/images')
-      .then(res => res.json())
-      .then(images => this.setState({ images }));
+    axios('http://localhost:3001/images')
+      .then(images => this.setState({ images: images.data }));
   }
 
   showGallery() {
