@@ -6,7 +6,7 @@ const Secret = () => {
   return (
     <div>
       <Header />
-      <h1>Secret</h1>
+      <h1>you found the Secret Page</h1>
     </div>
   );
 };

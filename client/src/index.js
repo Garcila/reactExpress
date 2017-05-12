@@ -10,16 +10,14 @@ import {
 import Secret from './Secret';
 import './index.css';
 
-const Root = () => {
-  return (
+const Root = () => (
     <Router>
       <div>
         <Route exact path='/' component={App} />
         <Route path='/secret' component={Secret} />
       </div>
     </Router>
-  );
-};
+);
 
 render(
   <Root />,

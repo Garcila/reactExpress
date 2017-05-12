@@ -8,7 +8,8 @@ import Gallery from './Gallery';
 class App extends Component {
   state = {
       images: [],
-      singleImage: true
+      singleImage: true,
+      loggedIn: false
   };
 
   componentDidMount() {
