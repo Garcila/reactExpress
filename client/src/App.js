@@ -14,7 +14,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios('http://localhost:3001/images')
+    axios('http://localhost:3001/images/')
       .then(images => this.setState({ images: images.data }));
   }
 

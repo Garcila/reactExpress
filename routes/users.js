@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     }
   });
 });
-// /* GET users listing. */
+/* GET users listing. */
 // router.get('/', function(req, res, next) {
 //   res.json([{
 //       image: 'https://cdn.pbrd.co/images/7t28OxT4o.jpg',

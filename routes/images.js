@@ -6,10 +6,9 @@ const Image = require('../models/image');
 router.get('/', (req, res) => {
   Image.find({}, (err, images) => {
     if (err) {
-      console.error(err);
-    } else {
-    res.json(images);
+      return console.error(err);
     }
+    res.json(images);
   });
 });
 

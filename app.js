@@ -1,4 +1,8 @@
 const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -7,8 +11,6 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const images = require('./routes/images');
-
-const app = express();
 
 //mongoose setup
 const mongoose = require('mongoose');
@@ -24,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', index);
 app.use('/users', users);
