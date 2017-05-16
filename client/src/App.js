@@ -32,6 +32,26 @@ class App extends Component {
     this.setState({ singleImage: !this.state.singleImage });
   }
 
+  AddImage() {
+    axios({
+      method: 'POST',
+      url: 'http://localhost:3001/images',
+      data: {
+        title: 'new',
+        image: 'https://goo.gl/1vgMjx',
+        description: 'otroqold shoe'
+      }
+    })
+    .then(res => {
+      this.setState({ images: [...this.state.images, res.data] });
+    })
+    .then(this.setState({ singleImage: false }));
+  }
+
+  // DeleteImage() {
+  //   axios.delete('http://localhost:3001/images')
+  // }
+
   render() {
     return (
       <div className='App'>
@@ -40,6 +60,7 @@ class App extends Component {
             changeView={this.changeView.bind(this)}
             go={this.state.singleImage ? 'all' : '1'}
           />
+          <div onClick={this.AddImage.bind(this)} style={{ cursor: 'pointer' }}>Add Image</div>
         </div>
         {this.showGallery()}
       </div>

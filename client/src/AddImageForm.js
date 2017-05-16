@@ -15,20 +15,20 @@ class AddImageForm extends Component {
   render() {
     return (
       <form
-        ref={ input => this.imageForm = input }
+        ref={input => this.imageForm = input}
         onSubmit={this.createImage}
       >
-        <input ref={(input) => this.title = input}
+        <input
+          ref={input => this.title = input}
           type='text'
           placeholder='Image title'
         />
         <textarea
-          ref={(input) => this.description = input}
+          ref={input => this.description = input}
           placeholder='Image description'
-        >
-        </textarea>
+        />
         <input
-          ref={(input) => this.image = input}
+          ref={input => this.image = input}
           type='text'
           placeholder='Image image'
         />
