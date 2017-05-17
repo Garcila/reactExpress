@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class AddImageForm extends Component {
+
   createImage = (e) => {
     e.preventDefault(e);
     const image = {
@@ -8,8 +9,8 @@ class AddImageForm extends Component {
       description: this.description.value,
       image: this.image.value
     };
-    this.props.addImage(image);
-    this.AddImageForm.reset();
+    this.props.AddImage(image);
+    this.imageForm.reset();
   }
 
   render() {
@@ -30,7 +31,7 @@ class AddImageForm extends Component {
         <input
           ref={input => this.image = input}
           type='text'
-          placeholder='Image image'
+          placeholder='Image url'
         />
         <button type='submit'>+ Add Item</button>
       </form>
