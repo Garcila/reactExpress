@@ -30,7 +30,7 @@ app.use(cors());
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/images', images);
+app.use(images);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

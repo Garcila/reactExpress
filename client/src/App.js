@@ -38,7 +38,7 @@ class App extends Component {
       url: 'http://localhost:3001/images',
       data: {
         title: 'new',
-        image: 'https://goo.gl/1vgMjx',
+        image: 'https://lh3.googleusercontent.com/sstwc56z31UMtuTFZvulHPnDl3sFutcJnmu7Tb5LCXMQwZBGmxgusEiOgKTo_LZ_lwDnHfsk8B3eplEy50opdIzNVHkUjc73ubGGBvNV52Lf7BaFBZ6eoGlahe9XptK-tC81dZ_S16NVaP9e7CbBk_qVpXTkoqZwzZ-81wqkUU6QGSeawArJNtgSasQj1GDp4tdsPjoftYUM1GFDdNYpvUJsIJJUDj1Hww4qAxi7D98dMKUQ3qAID6UAA6tVv6wGx38zHL916p1eaqC-oaj-Hxj5jr5FBA5puc9blhIWDuOPJrYKH5CMajyIoCPd3WB_FuZPBLrIahK8FaEaUgu3eTETAcfYu5ZmC8bVpkwwn_cLWDA1SrWWH3WLe5dVOjpbwJTojd1uLmt3ZXAbPRtALN8SBt6vwziEf2hhb8aCckltnTiq1bz-nppTBoZsa48P_oIbp6Qw0MA7T0bJokGPZiMhsbXc1zXH36YKnAMFFMSvy-8jjunXXYXdOVbvC9OvwJoR2zZM8tpjboae3DppVttWOyN_cNLaZFgoAn0gwdk-aVPhI3D4nfCo7zyUnIJwOt9O62sZZiVhi1oN3vVRroQcDQf2Rq7CIZCFQYAEgHjZr7GH1FE3XA=w606-h909-no',
         description: 'otroqold shoe'
       }
     })
@@ -48,9 +48,11 @@ class App extends Component {
     .then(this.setState({ singleImage: false }));
   }
 
-  // DeleteImage() {
-  //   axios.delete('http://localhost:3001/images')
-  // }
+  DeleteImage() {
+    axios.delete('http://localhost:3001/images', {
+      params: { title: 'new' }
+    });
+  }
 
   render() {
     return (
@@ -61,6 +63,7 @@ class App extends Component {
             go={this.state.singleImage ? 'all' : '1'}
           />
           <div onClick={this.AddImage.bind(this)} style={{ cursor: 'pointer' }}>Add Image</div>
+          <div onClick={this.DeleteImage.bind(this)} style={{ cursor: 'pointer' }}>Delete Image</div>
         </div>
         {this.showGallery()}
       </div>
