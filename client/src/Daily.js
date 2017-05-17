@@ -14,6 +14,7 @@ import Image from './Image';
                   <Image
                     key={index}
                     details={image}
+                    DeleteImage={props.DeleteImage}
                   />
                   : '';
               })

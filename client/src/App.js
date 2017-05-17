@@ -22,11 +22,14 @@ class App extends Component {
     if (this.state.singleImage) {
       return (
         <div>
-          <Daily images={this.state.images} />
+          <Daily
+            images={this.state.images}
+            DeleteImage={this.DeleteImage}
+          />
         </div>
       );
     }
-    return <Gallery images={this.state.images} />;
+    return <Gallery images={this.state.images} DeleteImage={this.DeleteImage} />;
   }
   changeView() {
     this.setState({ singleImage: !this.state.singleImage });
@@ -48,10 +51,14 @@ class App extends Component {
     .then(this.setState({ singleImage: false }));
   }
 
-  DeleteImage() {
-    axios.delete('http://localhost:3001/images', {
-      params: { title: 'new' }
-    });
+  DeleteImage(id) {
+    axios.delete(`http://localhost:3001/images/${id}`)
+      .then(res => {
+        console.log('image deleted sir from App axios');
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {

@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from './Image';
 
-const Gallery = ({ images }) => {
+const Gallery = (props) => {
+  const { images } = props;
   return (
     <div className='container'>
       <ul className='list-of-images'>
@@ -11,6 +12,7 @@ const Gallery = ({ images }) => {
               <Image
                 key={index}
                 details={image}
+                DeleteImage={props.DeleteImage}
               />
             );
           })

@@ -33,11 +33,12 @@ router.get('/images/:id', (req, res) => {
 });
 
 router.delete('/images/:id', (req, res) => {
-  Image.findByIdAndRemove({ _id: '591b50807a1d27411f51ed89' }, (err, image) => {
+  const id = req.params.id;
+  Image.findByIdAndRemove({ _id: id }, (err, image) => {
     if (err) {
       return console.error(err);
     }
-    console.log(image);
+    console.log('image', image);
     res.json({ message: 'deleted it is' });
   });
 });
