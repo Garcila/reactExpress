@@ -70,8 +70,6 @@ class App extends Component {
             changeView={this.changeView.bind(this)}
             go={this.state.singleImage ? 'all' : '1'}
           />
-          <div onClick={this.AddImage.bind(this)} style={{ cursor: 'pointer' }}>Add Image</div>
-          <div onClick={this.DeleteImage.bind(this)} style={{ cursor: 'pointer' }}>Delete Image</div>
         </div>
         {this.showGallery()}
         <AddImageForm AddImage={this.AddImage.bind(this)} />

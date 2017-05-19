@@ -1,5 +1,7 @@
 const express = require('express');
 
+const multer = require('multer');
+
 const router = express.Router();
 const Image = require('../models/image');
 
@@ -14,7 +16,9 @@ router.get('/images', (req, res) => {
 });
 
 // create route
-router.post('/images', (req, res) => {
+router.post('/images',
+  multer({ dest: './uploads' }).single('upl'),
+  (req, res) => {
   const title = req.body.title;
   const image = req.body.image;
   const description = req.body.description;

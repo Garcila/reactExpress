@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const images = require('./routes/images');
+const profile = require('./routes/profile');
 
 //mongoose setup
 const mongoose = require('mongoose');
@@ -31,6 +32,7 @@ app.use(cors());
 app.use('/', index);
 app.use('/users', users);
 app.use(images);
+app.use('/profile', profile);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

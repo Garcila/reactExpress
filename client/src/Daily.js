@@ -3,7 +3,7 @@ import Image from './Image';
 
   const Daily = (props) => {
     const { images } = props;
-    const randomNumber = Math.floor(Math.random() * (images.length)) + 1;
+    const randomNumber = Math.floor(Math.random() * (images.length));
     return (
       <div className='container'>
         <ul className='list-of-images'>
