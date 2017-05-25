@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -32,30 +34,27 @@ class App extends Component {
     }
     return <Gallery images={this.state.images} DeleteImage={this.DeleteImage} />;
   }
+
   changeView() {
     this.setState({ singleImage: !this.state.singleImage });
   }
 
   AddImage(image) {
-    axios({
-      method: 'POST',
-      url: 'http://localhost:3001/images',
-      data: {
-        title: image.title,
-        image: image.image,
-        description: image.description
-      }
-    })
-    .then(res => {
-      this.setState({ images: [...this.state.images, res.data] });
-    })
-    .then(this.setState({ singleImage: false }));
+    console.log('image from App.js  ', image.file_source);
+      let data = new FormData();
+      data.append('title', image.file_source.files[0].name);
+      data.append('file', image.file_source.files[0]);
+
+      axios.post('http://localhost:3001/images', data)
+        .then(res => console.log('success', res))
+        .catch(err => console.log('failure', err)
+      );
   }
 
   DeleteImage(id) {
     axios.delete(`http://localhost:3001/images/${id}`)
       .then(res => {
-        console.log('image deleted sir from App axios');
+        console.log('image deleted sir from App axios', res);
       })
       .catch(err => {
         console.error(err);

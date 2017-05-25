@@ -14,9 +14,9 @@ const Image = (props) => {
       <li className='images'>
         <div className='created'>{created}</div>
         <img className='image' src={image} alt='one face' />
-        <h3 className='image-title'>{title.toUpperCase()}</h3>
+        <h3 className='image-title'>{title ? title.toUpperCase() : 'no title'}</h3>
         <div className='description'>{description}</div>
-        <a href='#' onClick={imageDelete}>DELETE</a>
+        <button onClick={imageDelete}>Delete</button>
       </li>
     </div>
   );
