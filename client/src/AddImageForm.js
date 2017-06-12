@@ -15,7 +15,7 @@ class AddImageForm extends Component {
   render() {
     return (
       <form action='' ref={i => this.imageForm = i} encType='multipart/form-data'>
-        <input type='file' onChange={this.createImage.bind(this)} />
+        <input type='file' onChange={this.createImage.bind(this)} multiple />
       </form>
       // <form
       //   ref={input => this.imageForm = input}

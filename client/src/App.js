@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   AddImage(image) {
-    console.log('image from App.js  ', image.file_source);
+    console.log('image from App.js  ', image.file_source.files[0].metadata);
       let data = new FormData();
       data.append('title', image.file_source.files[0].name);
       data.append('file', image.file_source.files[0]);
@@ -54,7 +54,7 @@ class App extends Component {
   DeleteImage(id) {
     axios.delete(`http://localhost:3001/images/${id}`)
       .then(res => {
-        console.log('image deleted sir from App axios', res);
+        console.log('delete request sent from App axios', id);
       })
       .catch(err => {
         console.error(err);
