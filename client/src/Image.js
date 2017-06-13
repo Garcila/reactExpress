@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 
 const Image = (props) => {
-  console.log('from Image', props.details);
-
   const { metadata, created, _id, filename } = props.details;
   const imageDelete = (e) => {
     e.preventDefault();

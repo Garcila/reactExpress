@@ -31,20 +31,18 @@ conn.once('open', () => {
     router.get('/images/', (req, res) => {
         Image.find()
         .then((images) => {
-          let imageIds = images.map((image) =>
-              { return image._id; }
-            );
+          // let imageIds = images.map((image) =>
+          //     image._id
+          //   );
 
           res.json(images);
-
-          // res.render('index', { images });
         });
       });
 
     // create route______________________________________________
     router.post('/images', upload.single('file'), (req, res) => {
-      const filePath = req.file.path;
-      console.log('req file', req.file);
+      // const filePath = req.file.path;
+      // console.log('req file', req.file);
 
       const title = req.file.originalname;
       const meta = req.body;

@@ -40,15 +40,17 @@ class App extends Component {
   }
 
   AddImage(image) {
-    console.log('image from App.js  ', image.file_source.files[0].metadata);
-      let data = new FormData();
-      data.append('title', image.file_source.files[0].name);
-      data.append('file', image.file_source.files[0]);
+      let images = image.file_source.files;
+      for(let i=0; i < images.length; i++) {
+        let data = new FormData();
+        console.log(image.file_source.files[i]);
+        data.append('title', image.file_source.files[i].name);
+        data.append('file', image.file_source.files[i]);
 
-      axios.post('http://localhost:3001/images', data)
-        .then(res => console.log('success', res))
-        .catch(err => console.log('failure', err)
-      );
+        axios.post('http://localhost:3001/images', data)
+          .then(res => console.log('success', res))
+          .catch(err => console.log('failure', err));
+      }
   }
 
   DeleteImage(id) {
