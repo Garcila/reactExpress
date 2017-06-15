@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from './Image';
 
-  const Daily = (props) => {
+const Daily = (props) => {
     const { images } = props;
     const randomNumber = Math.floor(Math.random() * (images.length));
     return (
       <div className='container'>
-        <ul className='list-of-images'>
+        <ul className='list-of-1-image'>
           <div className="App">
             {
               images.map((image, index) => {

@@ -9,7 +9,6 @@ const Image = (props) => {
   };
 
   return (
-    <div className='container'>
       <li className='images'>
         <div className='created'>{created}</div>
         <img className='image' src={`http://localhost:3001/images/show/${_id}`} alt='one face' />
@@ -17,7 +16,6 @@ const Image = (props) => {
         <div className='description'>{metadata.description}</div>
         <button onClick={imageDelete}>Delete</button>
       </li>
-    </div>
   );
 };
 
