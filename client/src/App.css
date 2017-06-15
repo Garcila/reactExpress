@@ -91,6 +91,7 @@ body {
 .images {
   display: flex;
   flex-flow: column;
+  max-width: 40%;
 }
 
 .image {

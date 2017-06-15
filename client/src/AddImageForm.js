@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
 class AddImageForm extends Component {
-
-  createImage = (e) => {
-    e.preventDefault(e);
+  // get information from the form, create object with it and reset
+  createImage = (event) => {
+    event.preventDefault();
     const image = {
-      file_source: e.target,
+      file_source: this.file_source,
     };
+
     this.props.AddImage(image);
     this.imageForm.reset();
   }
@@ -16,17 +17,23 @@ class AddImageForm extends Component {
       <form
         action=''
         name='file'
-        ref={i => this.imageForm = i}
+        ref={input => this.imageForm = input}
         encType='multipart/form-data'
+        onSubmit={this.createImage.bind(this)}
       >
         <input type='file'
           name='file'
           multiple
-          // onChange={this.loggeIt.bind(this)}
+          ref={input => this.file_source = input}
 
-          onChange={this.createImage.bind(this)}
+          // onChange={this.createImage.bind(this)}
         />
-        <button type='submit' onSubmit={this.createImage.bind(this)}>add</button>
+        <input
+          ref={input => this.title = input}
+          type='text'
+          placeholder='Image title'
+        />
+        <button type='submit'>add</button>
       </form>
 
       // <form

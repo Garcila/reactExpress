@@ -17,8 +17,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios('http://localhost:3001/images/')
-      .then(images => this.setState({ images: images.data }));
+    axios.get('http://localhost:3001/images/')
+    .then(images => this.setState({ images: images.data }));
+  }
+
+  updateImages() {
+    axios.get('http://localhost:3001/images/')
+    .then(images => this.setState({ images: images.data }));
   }
 
   showGallery() {
@@ -33,6 +38,7 @@ class App extends Component {
       );
     }
     return <Gallery images={this.state.images} DeleteImage={this.DeleteImage} />;
+
   }
 
   changeView() {
@@ -43,12 +49,12 @@ class App extends Component {
       let images = image.file_source.files;
       for(let i=0; i < images.length; i++) {
         let data = new FormData();
-        console.log(image.file_source.files[i]);
         data.append('title', image.file_source.files[i].name);
         data.append('file', image.file_source.files[i]);
-
         axios.post('http://localhost:3001/images', data)
-          .then(res => console.log('success', res))
+          .then(res => {
+            this.updateImages();
+            console.log('success', res)})
           .catch(err => console.log('failure', err));
       }
   }

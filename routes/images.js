@@ -31,10 +31,6 @@ conn.once('open', () => {
     router.get('/images/', (req, res) => {
         Image.find()
         .then((images) => {
-          // let imageIds = images.map((image) =>
-          //     image._id
-          //   );
-
           res.json(images);
         });
       });
