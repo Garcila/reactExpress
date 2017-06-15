@@ -10,15 +10,20 @@ import Gallery from './Gallery';
 import AddImageForm from './AddImageForm';
 
 class App extends Component {
-  state = {
+  constructor() {
+    super();
+
+    this.DeleteImage = this.DeleteImage.bind(this);
+
+    this.state = {
       images: [],
-      singleImage: true,
-      loggedIn: false
-  };
+      singleImage: false,
+      loggedIn: false,
+    };
+  }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/images/')
-    .then(images => this.setState({ images: images.data }));
+    this.updateImages();
   }
 
   updateImages() {
@@ -37,6 +42,7 @@ class App extends Component {
         </div>
       );
     }
+
     return <Gallery images={this.state.images} DeleteImage={this.DeleteImage} />;
 
   }
@@ -46,22 +52,24 @@ class App extends Component {
   }
 
   AddImage(image) {
-      let images = image.file_source.files;
-      for(let i=0; i < images.length; i++) {
-        let data = new FormData();
-        data.append('title', image.file_source.files[i].name);
-        data.append('file', image.file_source.files[i]);
-        axios.post('http://localhost:3001/images', data)
-          .then(res => {
-            this.updateImages();
-            console.log('success', res)})
-          .catch(err => console.log('failure', err));
-      }
+    let images = image.file_source.files;
+    for (let i = 0; i < images.length; i++) {
+      let data = new FormData();
+      data.append('title', image.file_source.files[i].name);
+      data.append('file', image.file_source.files[i]);
+      axios.post('http://localhost:3001/images', data)
+        .then(res => {
+          this.updateImages();
+          console.log('success', res);
+        })
+        .catch(err => console.log('failure', err));
+    }
   }
 
   DeleteImage(id) {
     axios.delete(`http://localhost:3001/images/${id}`)
       .then(res => {
+        this.updateImages();
         console.log('delete request sent from App axios', id);
       })
       .catch(err => {
