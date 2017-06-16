@@ -64,7 +64,8 @@ body {
 /*Body*/
 /*============================*/
 .created {
-  font-size: 1.2em;
+  align-self: flex-start;
+  font-size: 0.8em;
   font-family: 'Reenie Beanie', cursive;
 }
 

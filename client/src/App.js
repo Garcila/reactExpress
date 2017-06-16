@@ -17,7 +17,7 @@ class App extends Component {
 
     this.state = {
       images: [],
-      singleImage: false,
+      singleImage: true,
       loggedIn: false,
     };
   }
@@ -52,11 +52,14 @@ class App extends Component {
   }
 
   AddImage(image) {
+    console.log('image title', image.title);
     let images = image.file_source.files;
     for (let i = 0; i < images.length; i++) {
       let data = new FormData();
-      data.append('title', image.file_source.files[i].name);
+      data.append('fileName', image.file_source.files[i].name);
       data.append('file', image.file_source.files[i]);
+      data.append('title', image.title || image.file_source.files[i].name.split('.', 1)[0]);
+      data.append('description', image.description);
       axios.post('http://localhost:3001/images', data)
         .then(res => {
           this.updateImages();

@@ -38,24 +38,29 @@ conn.once('open', () => {
     // create route______________________________________________
     router.post('/images', upload.single('file'), (req, res) => {
       // const filePath = req.file.path;
-      // console.log('req file', req.file);
+      console.log('req file', req.file);
+      console.log('req body', req.body);
 
-      const title = req.file.originalname;
+      const fileName = req.file.originalname;
+      const imageName = req.file.originalname.split('.', 1)[0];
       const meta = req.body;
       const mimetype = req.file.mimetype;
-      const imgFilename = req.file.filename;
-      const description = 'this will be the description';
+      const title = req.body.title;
+      const description = req.body.description;
+
+      console.log('meta', meta);
 
       const writeStream = gfs.createWriteStream({
-          filename: title,
+          filename: fileName,
           mode: 'w',
           content_type: mimetype,
           metadata: {
             description: description,
+            image_name: title,
           },
         });
       fs.createReadStream(`./uploads/${req.file.originalname}`)
-        .on('end', () => {fs.unlink(`./uploads/${imgFilename}`, (err) => {res.send('success');});})
+        .on('end', () => {fs.unlink(`./uploads/${fileName}`, (err) => {res.send('success');});})
         .on('err', () => {res.send('Error uploading image');})
         .pipe(writeStream);
     });
