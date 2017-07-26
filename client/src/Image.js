@@ -12,7 +12,9 @@ const Image = (props) => {
       <li className='images'>
         <div className='created'>{uploadDate}</div>
         <img className='image' src={`http://localhost:3001/images/show/${_id}`} alt='one face' />
-        <h3 className='image-title'>{metadata.image_name ? metadata.image_name.toUpperCase() : 'no title'}</h3>
+        <h3 className='image-title'>
+          {metadata.image_name ? metadata.image_name.toUpperCase() : 'no title'}
+        </h3>
         <div className='description'>{metadata.description}</div>
         <button onClick={imageDelete}>Delete</button>
       </li>

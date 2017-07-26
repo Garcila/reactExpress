@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 class AddImageForm extends Component {
+
   // get information from the form, create object with it and reset
+  
   createImage = (event) => {
     event.preventDefault();
     const image = {

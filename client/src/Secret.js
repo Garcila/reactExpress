@@ -1,11 +1,16 @@
 import React from 'react';
 
-import Header from './common/HeaderJs';
+import HeaderJs from './common/HeaderJs';
 
-const Secret = () => {
+const Secret = (props) => {
+  console.log('from secret ', props);
+  const { auth, history } = props;
   return (
     <div>
-      <Header />
+        <HeaderJs
+            auth={auth}
+            history={history} 
+        />  
       <h1>you found the Secret Page</h1>
     </div>
   );
