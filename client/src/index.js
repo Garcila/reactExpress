@@ -2,10 +2,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import {
-    BrowserRouter as Router,
-    Route
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from './App';
 import Secret from './Secret';
 import './index.css';
@@ -20,28 +17,27 @@ const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
     auth.handleAuthentication();
   }
-}
+};
 //============================================^
 
-const Root = () => (
+const Root = () =>
   //===========================================================
-    <Router history={history} component={App}>
-      <div>
-        {/* //============================================= */}
-        <Route exact path='/' render={(props) => <App auth={auth} {...props} />} />
-        <Route path='/secret' render={(props) => {
+  <Router history={history} component={App}>
+    <div>
+      {/* //============================================= */}
+      <Route exact path="/" render={props => <App auth={auth} {...props} />} />
+      <Route
+        path="/secret"
+        render={props => {
           handleAuthentication(props);
-          return <Secret auth={auth} {...props} />
-        }}/>
+          return <Secret auth={auth} {...props} />;
+        }}
+      />
 
-        {/* //==================================================^ */}
-        {/* <Route exact path='/' component={App} /> */}
-         {/* <Route path='/secret' component={Secret} />  */}
-      </div>
-    </Router>
-);
+      {/* //==================================================^ */}
+      {/* <Route exact path='/' component={App} /> */}
+      {/* <Route path='/secret' component={Secret} />  */}
+    </div>
+  </Router>;
 
-render(
-  <Root />,
-  document.getElementById('root')
-);
+render(<Root />, document.getElementById('root'));
