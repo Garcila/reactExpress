@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Button } from 'semantic-ui-react';
+import { Header, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import '../App.css';
@@ -30,21 +30,21 @@ class HeaderJs extends Component {
           Faces...
         </Link>
         <Header.Subheader className="subtitle">
-          My family doesn\'t get
+          My family doesn't get
         </Header.Subheader>
 
-        <Header.Subheader>
+        <div>
           {!isAuthenticated() &&
-            <Button onClick={this.login.bind(this)}>Log In</Button>}
+            <Icon bordered color="teal" name="sign in" size="small" 
+            onClick={this.login.bind(this)} />}
           {isAuthenticated() &&
-            <Button color="teal" onClick={this.logout.bind(this)}>
-              Log Out
-            </Button>}
-        </Header.Subheader>
+            <Icon size="mini" color="red" name="sign out" size="small"
+            onClick={this.logout.bind(this)}/>}
+        </div>
 
-        <Header.Subheader className="moreFaces" onClick={changeView}>
+        <div className="moreFaces" onClick={changeView}>
           {go}
-        </Header.Subheader>
+        </div>
       </Header>
     );
   }

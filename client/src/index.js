@@ -33,10 +33,6 @@ const Root = () =>
           return <Secret auth={auth} {...props} />;
         }}
       />
-
-      {/* //==================================================^ */}
-      {/* <Route exact path='/' component={App} /> */}
-      {/* <Route path='/secret' component={Secret} />  */}
     </div>
   </Router>;
 

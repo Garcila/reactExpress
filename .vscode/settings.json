@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Hopscotch (TextMate Theme)",
+    "workbench.activityBar.visible": true,
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "files.autoSave": "onFocusChange",
+    "emmet.syntaxProfiles": {
+        "javascript": "html"
+    },
+    "prettier.singleQuote": true,
+    "prettier.eslintIntegration": true
+}

@@ -40,25 +40,35 @@ body {
 }
 
 .title-link {
+  padding-left: 0.5em;
+  /* padding-top: 0.4em; */
   text-decoration: none;
+  font-family: 'Raleway', sans-serif;
 }
 
 .title-link:visited {
-  color: #e5eaee
+  color: #e5eaee;
+  font-family: 'Raleway', sans-serif;
 }
 
-.subtitle {
+.ui.header .sub.header {
+  color: #e5eaee;
   font-size: 0.8em;
   font-weight: normal;
   font-family: 'Reenie Beanie', cursive;
-  padding-left: 0.1em;;
+  padding-left: 0.5em;
 }
 
 .moreFaces {
+  padding-right: 0.5em;
   color: #e6e5e3;
   cursor: pointer;
-  font-size: 0.8em;
+  font-size: 0.6em;
   justify-content: flex-end;
+}
+
+.moreFaces:hover {
+  color: #c8c8c8;
 }
 
 /*Body*/
