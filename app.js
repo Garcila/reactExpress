@@ -59,5 +59,5 @@ app.use((err, req, res) => {
 // module.exports = app;
 
 /////==============================================
-const PORT = normalizePort(process.env.PORT || '3001');
-app.listen(PORT);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log(`running at Port: ${PORT}`));
