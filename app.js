@@ -56,4 +56,8 @@ app.use((err, req, res) => {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+
+/////==============================================
+const PORT = normalizePort(process.env.PORT || '3001');
+app.listen(PORT);
