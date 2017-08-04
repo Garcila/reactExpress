@@ -23,7 +23,7 @@ const keys = require('./config/keys');
 //bluebird promises to replace default mongoose promises
 mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://germanarcila:mandarino@ds111851.mlab.com:11851/faces');
+mongoose.connect(keys.mongoURI);
 
 // mongoose.connect('mongodb://localhost/faces');
 
