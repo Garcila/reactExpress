@@ -13,15 +13,17 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const images = require('./routes/images');
 const profile = require('./routes/profile');
-const keys = require('./config/keys');
 
 //mongoose setup
 const mongoose = require('mongoose');
 
+//file with keys not to be saved to git
+const keys = require('./config/keys');
+
 //bluebird promises to replace default mongoose promises
 mongoose.Promise = require('bluebird');
 
-mongoose.connect(keys.mongooseURI);
+mongoose.connect('mongodb://germanarcila:mandarino@ds111851.mlab.com:11851/faces');
 
 // mongoose.connect('mongodb://localhost/faces');
 
