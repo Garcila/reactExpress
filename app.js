@@ -13,6 +13,7 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const images = require('./routes/images');
 const profile = require('./routes/profile');
+const keys = require('./config/keys');
 
 //mongoose setup
 const mongoose = require('mongoose');
@@ -20,7 +21,9 @@ const mongoose = require('mongoose');
 //bluebird promises to replace default mongoose promises
 mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost/faces');
+mongoose.connect(keys.mongooseURI);
+
+// mongoose.connect('mongodb://localhost/faces');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
