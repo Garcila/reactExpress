@@ -24,7 +24,8 @@ const keys = require('./config/keys.js');
 mongoose.Promise = require('bluebird');
 
 //connection to mlab mongodb
-mongoose.connect(keys.mongoURI);
+// mongoose.connect(keys.mongoURI);
+mongoose.connect('mongodb://germanarcila:mandarino@ds111851.mlab.com:11851/faces');
 
 //connection to local mongo db
 // mongoose.connect('mongodb://localhost/faces');
