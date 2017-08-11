@@ -3,9 +3,6 @@ const cors = require('cors');
 
 const app = express();
 
-//file with keys not to be saved to git
-const keys = require('./keys');
-
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -20,10 +17,14 @@ const profile = require('./routes/profile');
 //mongoose setup
 const mongoose = require('mongoose');
 
+//file with keys not to be saved to git
+const keys = require('./config/keys');
+
 //bluebird promises to replace default mongoose promises
 mongoose.Promise = require('bluebird');
 
 //connection to mlab mongodb  *****FIX THIS SO YOU DON'T POST YOUR DB INFO... LINKED TO ./CONFIG/KEYS.JS...*****
+mongoose.connect('mongodb://germanarcila:mandarino@ds111851.mlab.com:11851/faces')
 mongoose.connect(keys.mongoURI);
 
 //connection to local mongo db
