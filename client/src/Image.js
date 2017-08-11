@@ -19,7 +19,7 @@ const Image = props => {
       </div>
       <img
         className="image"
-        src={`http://localhost:3001/images/show/${_id}`}
+        src={`https://obscure-beyond-35921.herokuapp.com/images/show/${_id}`}
         alt="one face"
       />
       <h3 className="image-title">

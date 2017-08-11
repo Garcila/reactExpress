@@ -18,14 +18,13 @@ const profile = require('./routes/profile');
 const mongoose = require('mongoose');
 
 //file with keys not to be saved to git
-// const keys = require('./config/keys.js');
+const keys = require('./configur/keys.js');
 
 //bluebird promises to replace default mongoose promises
 mongoose.Promise = require('bluebird');
 
-//connection to mlab mongodb
-// mongoose.connect(keys.mongoURI);
-mongoose.connect('mongodb://germanarcila:mandarino@ds111851.mlab.com:11851/faces');
+//connection to mlab mongodb  *****FIX THIS SO YOU DON'T POST YOUR DB INFO... LINKED TO ./CONFIG/KEYS.JS...*****
+mongoose.connect(keys.mongoURI);
 
 //connection to local mongo db
 // mongoose.connect('mongodb://localhost/faces');

@@ -28,7 +28,8 @@ class App extends Component {
 
   updateImages() {
     axios
-      .get('http://localhost:3001/images/')
+      // .get('http://localhost:3001/images/')
+      .get('https://obscure-beyond-35921.herokuapp.com/images/')
       .then(images => this.setState({ images: images.data }));
   }
 
@@ -71,7 +72,9 @@ class App extends Component {
       );
       data.append('description', image.description);
       axios
-        .post('http://localhost:3001/images', data)
+        // .post('http://localhost:3001/images', data)
+        .post('https://obscure-beyond-35921.herokuapp.com/images/', data)
+        
         .then(res => {
           this.updateImages();
           console.log('success', res);
@@ -82,7 +85,8 @@ class App extends Component {
 
   DeleteImage(id) {
     axios
-      .delete(`http://localhost:3001/images/${id}`)
+      // .delete(`http://localhost:3001/images/${id}`)
+      .delete(`https://obscure-beyond-35921.herokuapp.com/images/${id}`)
       .then(res => {
         this.updateImages();
         console.log('delete request sent from App axios', id);
