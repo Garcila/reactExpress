@@ -25,7 +25,7 @@ mongoose.Promise = require('bluebird');
 
 //connection to mlab mongodb  *****FIX THIS SO YOU DON'T POST YOUR DB INFO... LINKED TO ./CONFIG/KEYS.JS...*****
 mongoose.connect('mongodb://germanarcila:mandarino@ds111851.mlab.com:11851/faces')
-mongoose.connect(keys.mongoURI);
+// mongoose.connect(keys.mongoURI);
 
 //connection to local mongo db
 // mongoose.connect('mongodb://localhost/faces');
