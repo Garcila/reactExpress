@@ -18,7 +18,7 @@ const profile = require('./routes/profile');
 const mongoose = require('mongoose');
 
 //file with keys not to be saved to git
-const keys = require('./config/keys');
+// const keys = require('./config/keys');
 
 //bluebird promises to replace default mongoose promises
 mongoose.Promise = require('bluebird');
