@@ -1,0 +1,8 @@
+.nav {
+  display: flex;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  justify-content: space-around;
+  background: rgb(106, 106, 106);
+}

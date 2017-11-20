@@ -1,13 +1,12 @@
-/* eslint-env browser */
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 
-import HeaderJs from './common/HeaderJs';
+import Header from './common/Header';
+import Nav from '../src/common/Nav';
 import Daily from './Daily';
 import Gallery from './Gallery';
-import AddImageForm from './AddImageForm';
+// import AddImageForm from './AddImageForm';
 
 class App extends Component {
   constructor() {
@@ -74,7 +73,6 @@ class App extends Component {
       axios
         // .post('http://localhost:3001/images', data)
         .post('https://obscure-beyond-35921.herokuapp.com/images/', data)
-        
         .then(res => {
           this.updateImages();
           console.log('success', res);
@@ -99,16 +97,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header-container">
-          <HeaderJs
-            changeView={this.changeView.bind(this)}
-            go={this.state.singleImage ? 'all' : '1'}
-            auth={this.props.auth}
-            history={this.props.history}
-          />
-        </div>
+        <Header
+          titleMain={'1000 faces...'}
+          subtitle={"My family doesn't like"}
+        />
+        <Nav
+          changeView={this.changeView.bind(this)}
+          go={this.state.singleImage ? 'See All Faces' : 'Single Face'}
+          auth={this.props.auth}
+          history={this.props.history}
+        />
         {this.showGallery()}
-        <AddImageForm AddImage={this.AddImage.bind(this)} />
+        {/* <AddImageForm AddImage={this.AddImage.bind(this)} /> */}
       </div>
     );
   }
