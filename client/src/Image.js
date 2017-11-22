@@ -13,19 +13,19 @@ const Image = props => {
   };
 
   return (
-    <li className="images">
-      <div className="created">
+    <li className="image-card">
+      <div className="image-created">
         {uploadDate}
       </div>
       <img
-        className="image"
+        className="image-src"
         src={`https://obscure-beyond-35921.herokuapp.com/images/show/${_id}`}
         alt="one face"
       />
       <h3 className="image-title">
         {metadata.image_name ? metadata.image_name.toUpperCase() : 'no title'}
       </h3>
-      <div className="description">
+      <div className="image-description">
         {metadata.description}
       </div>
       {isAuthenticated() && <button onClick={imageDelete}>Delete</button>}

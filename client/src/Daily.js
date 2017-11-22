@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from './Image';
 
+import './App.css';
+
 const Daily = props => {
   const { images } = props;
   const randomNumber = Math.floor(Math.random() * images.length);
@@ -18,22 +20,25 @@ const Daily = props => {
         In this page is the image of the day, week or month... depending on time
         and creativity.
       </h2>
-      <ul className="list-of-1-image">
-        <div className="App">
-          {images.map((image, index) => {
-            return index === randomNumber ? (
-              <Image
-                key={index}
-                details={image}
-                DeleteImage={props.DeleteImage}
-                auth={props.auth}
-              />
-            ) : (
-              ''
-            );
-          })}
-        </div>
-      </ul>
+      {images.map((image, index) => {
+        console.log(image._id);
+        return index === randomNumber ? (
+          <ul key={index} className="list-of-1-image">
+            <div 
+            className="background-blur"
+            style={{ background: `url('https://obscure-beyond-35921.herokuapp.com/images/show/${image._id}')`, backgroundSize: 'contain' }}
+            >j</div>
+            <Image
+              key={index}
+              details={image}
+              DeleteImage={props.DeleteImage}
+              auth={props.auth}
+            />
+          </ul>
+        ) : (
+          ''
+        );
+      })}
     </div>
   );
 };
