@@ -35,13 +35,11 @@ class App extends Component {
   showGallery() {
     if (this.state.singleImage) {
       return (
-        <div>
           <Daily
             images={this.state.images}
             DeleteImage={this.DeleteImage}
             auth={this.props.auth}
           />
-        </div>
       );
     }
 
@@ -59,7 +57,6 @@ class App extends Component {
   }
 
   AddImage(image) {
-    console.log('image title', image.title);
     let images = image.file_source.files;
     for (let i = 0; i < images.length; i++) {
       let data = new FormData();
