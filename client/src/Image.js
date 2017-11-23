@@ -7,7 +7,7 @@ class Image extends Component {
     super(props);
 
     this.state = {
-      largeImage: false
+      largeImage: true
     };
   }
 
