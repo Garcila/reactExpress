@@ -17,7 +17,9 @@ class App extends Component {
     this.state = {
       images: [],
       singleImage: true,
-      loggedIn: false
+      loggedIn: false,
+      selectedImageId: 0,
+      loading: true
     };
   }
 
@@ -29,32 +31,46 @@ class App extends Component {
     axios
       // .get('http://localhost:3001/images/')
       .get('https://obscure-beyond-35921.herokuapp.com/images/')
-      .then(images => this.setState({ images: images.data }));
+      .then(images => this.setState({ images: images.data }))
+      .then(this.setState({loading: false}));
   }
 
   showGallery() {
     if (this.state.singleImage) {
       return (
+        this.state.loading ? 
+          <div className="spinner">Drawing Face</div>
+          :
           <Daily
             images={this.state.images}
             DeleteImage={this.DeleteImage}
             auth={this.props.auth}
+            id={this.state.selectedImageId}
           />
       );
     }
 
     return (
+      this.state.loading ?
+      <div className="spinner">Drawing Faces</div>
+      :
       <Gallery
         images={this.state.images}
         DeleteImage={this.DeleteImage}
         auth={this.props.auth}
-      />
-    );
-  }
+        viewCard={this.viewCard.bind(this)}
+        />
+      );
+    }
 
-  changeView() {
-    this.setState({ singleImage: !this.state.singleImage });
-  }
+    viewCard(id) {
+      this.setState({singleImage: !this.state.singleImage, selectedImageId: id });
+      this.showGallery();
+    }
+    
+    changeView() {
+      this.setState({ singleImage: !this.state.singleImage });
+    }
 
   AddImage(image) {
     let images = image.file_source.files;

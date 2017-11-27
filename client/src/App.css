@@ -16,6 +16,14 @@ body {
   flex-flow: column;
 }
 
+.welcome-message {
+  font-family: Raleway;
+  font-size: 0.6rem;
+  padding: 1rem 2rem;
+  justify-content: space-around;
+  color: grey;
+}
+
 /*Body*/
 /*============================*/
 /* Images */
@@ -80,3 +88,53 @@ body {
   font-size: 0.8rem;
 }
 
+/*============================*/
+/* Media Queries */
+
+@media screen and (max-width:600px) {
+  .list-of-images {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .welcome-message {
+    font-size: 1rem;
+  }
+}
+
+
+/*============================*/
+/* Helpers */
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;  
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}

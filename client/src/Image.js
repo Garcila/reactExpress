@@ -30,7 +30,7 @@ class Image extends Component {
         <div className="image-created">{uploadDate}</div>
         <img
           className="image-src"
-          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${_id}`}
+          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${this.props.id || _id}`}
           alt="one face"
           onClick={this.cardOrImage.bind(this)}
         />
@@ -60,7 +60,7 @@ class Image extends Component {
         <img
           className="image-src"
           onClick={this.cardOrImage.bind(this)}
-          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${_id}`}
+          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${this.props.id}`}
           alt="one face"
           style={{
             minHeight: '95vh'
