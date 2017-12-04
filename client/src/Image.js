@@ -68,7 +68,7 @@ class Image extends Component {
         />
       </div>
     );
-
+    
     return this.state.largeImage ? (
       <div>{showCard}</div>
     ) : (
