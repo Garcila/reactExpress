@@ -19,8 +19,10 @@ body {
 .welcome-message {
   font-family: Raleway;
   font-size: 0.6rem;
-  padding: 1rem 2rem;
-  justify-content: space-around;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 0.2rem;
+  justify-content: center;
   color: grey;
 }
 
@@ -36,11 +38,30 @@ body {
 .list-of-images {
   max-width: 80vw;
   margin-top: 2rem;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(140px, 1fr));
+  grid-gap: 6px;
+  grid-auto-rows: minmax(100px, 140px); */
   display: flex;
   align-self: center;
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* .short {
+  grid-column-end: span 1;
+  grid-row-end: span 2;
+}
+
+.tall {
+  grid-column-end: span 2;
+  grid-row-end: span 3;
+}
+
+.mini {
+  grid-column-end: span 4;
+  grid-row-end: span 2;
+} */
 
 .list-of-1-image {
   height: 60vh;
@@ -55,13 +76,14 @@ body {
   position: absolute;
   content: '';
   height: 68vh;
-  width: 120vw;
+  width: 100vw;
   filter: opacity(20%) blur(3px);
   z-index: -10;
-  /* background image and background-blur size inline style in Daily.js to use image._id */
 }
 
+
 .image-card {
+  margin-top: 4rem;
   height: 63vh;
   min-width: 40vh;
   display: flex;

@@ -29,8 +29,9 @@ const Daily = props => {
               style={{
                 background: `url('https://obscure-beyond-35921.herokuapp.com/images/show/${props.id ||
                   image._id}')`,
-                backgroundSize: 'contain',
-                marginTop: '2.2rem'
+                backgroundSize: 'cover',
+                marginTop: '2.2rem',
+                overflowX: 'hidden'
               }}
             />
             <Image
