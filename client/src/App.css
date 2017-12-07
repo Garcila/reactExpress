@@ -17,6 +17,7 @@ body {
 }
 
 .welcome-message {
+  display: flex;
   font-family: Raleway;
   font-size: 0.6rem;
   padding-top: 1rem;

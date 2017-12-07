@@ -10,16 +10,8 @@ const Daily = props => {
     <div className="container">
       <h2
         className="welcome-message"
-        // style={{
-        //   fontFamily: 'Raleway',
-        //   fontSize: '0.6rem',
-        //   padding: '1rem 2rem',
-        //   justifyContent: 'spaceAround',
-        //   color: 'grey'
-        // }}
       >
         Welcome to faces. In this page is the image of the day, week or month...
-        depending on time and creativity.
       </h2>
       {images.map((image, index) => {
         return index === randomNumber ? (

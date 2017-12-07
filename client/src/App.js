@@ -6,7 +6,7 @@ import Header from './common/Header';
 import Nav from '../src/common/Nav';
 import Daily from './Daily';
 import Gallery from './Gallery';
-import AddImageForm from './AddImageForm';
+// import AddImageForm from './AddImageForm';
 
 class App extends Component {
   constructor() {
