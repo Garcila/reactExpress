@@ -3,8 +3,6 @@ import './App.css';
 
 import VanillaTilt from 'vanilla-tilt';
 
-
-
 class Image extends Component {
   constructor(props) {
     super(props);

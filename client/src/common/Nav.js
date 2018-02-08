@@ -25,7 +25,7 @@ class Nav extends Component {
         <div>
           {!isAuthenticated() && (
             <div className="log" onClick={this.login.bind(this)} name="sign in">
-              Log In / Sign Up
+              Log In / Sign Up  
             </div>
           )}
           {isAuthenticated() && (
