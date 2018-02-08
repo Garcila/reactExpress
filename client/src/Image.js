@@ -4,12 +4,11 @@ import './App.css';
 import VanillaTilt from 'vanilla-tilt';
 
 
+
 class Image extends Component {
   constructor(props) {
-    console.log(props);
     super(props);
-    
-    console.log(props);
+
     this.state = {
       largeImage: true
     };
@@ -24,7 +23,8 @@ class Image extends Component {
       max: 25,
       speed: 400,
       glare: true,
-      'max-glare': 0.5,
+      'max-glare': 1,
+      'glare-prerender': false
     })
   }
 
@@ -46,7 +46,7 @@ class Image extends Component {
           src={`https://obscure-beyond-35921.herokuapp.com/images/show/${this.props.id || _id}`}
           alt="one face"
           onClick={this.cardOrImage.bind(this)}
-          data-tilt
+          // data-tilt
         />
         <h3 className="image-title">
           {metadata.image_name ? metadata.image_name.toUpperCase() : 'no title'}

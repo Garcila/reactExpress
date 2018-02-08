@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
-
+import VanillaTilt from 'vanilla-tilt';
 class Gallery extends Component {
+
+  componentDidMount() {
+    VanillaTilt.init(document.querySelectorAll('.image-src'), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      'max-glare': 0.5,
+    })
+  }
+
+  
 
   render() {
     const { images, viewCard } = this.props;

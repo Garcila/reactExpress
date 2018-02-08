@@ -74,6 +74,7 @@ class App extends Component {
 
   AddImage(image) {
     let images = image.file_source.files;
+
     for (let i = 0; i < images.length; i++) {
       let data = new FormData();
       data.append('fileName', image.file_source.files[i].name);
