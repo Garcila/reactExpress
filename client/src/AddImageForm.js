@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Button, Form } from 'semantic-ui-react';
+import './AddImageForm.css';
 
 class AddImageForm extends Component {
   // get information from the form, create object with it and reset
@@ -20,29 +20,32 @@ class AddImageForm extends Component {
 
   render() {
     return (
-      <form
-        name="file"
-        ref={input => (this.imageForm = input)}
-        encType="multipart/form-data"
-        onSubmit={this.createImage}
-      >
-        <input
-          type="file"
+      <div className="add-image-container">
+        <form
+          className="add-image-edit"
           name="file"
-          multiple
-          ref={input => (this.file_source = input)}
-        />
-        <input
-          type="text"
-          ref={input => (this.title = input)}
-          placeholder="Image title or empty to use filename"
-        />
-        <textarea
-          ref={input => (this.description = input)}
-          rows="1"
-        ></textarea>
-        <button type="submit">+ Add Images</button>
-      </form>
+          ref={input => (this.imageForm = input)}
+          encType="multipart/form-data"
+          onSubmit={this.createImage}
+        >
+          <input
+            type="file"
+            name="file"
+            multiple
+            ref={input => (this.file_source = input)}
+          />
+          <input
+            type="text"
+            ref={input => (this.title = input)}
+            placeholder="Image title or empty to use filename"
+          />
+          <textarea
+            ref={input => (this.description = input)}
+            rows="1"
+          ></textarea>
+          <button type="submit">+ Add Images</button>
+        </form>
+      </div>
     );
   }
 }

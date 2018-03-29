@@ -1,0 +1,44 @@
+.add-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-image-edit {
+  margin-top: 9rem;
+  margin-bottom: 20px;
+  border: 2px solid rgb(89, 89, 89);
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+.add-image-edit input,
+.add-image-edit textarea,
+.add-image-edit select {
+  width: 100%;
+  padding: 10px;
+  line-height: 1;
+  font-size: 1.2rem;
+  border: 0;
+  border-bottom: 1px solid #000;
+  appearance: none;
+  border-radius: 0;
+  background: #fff;
+}
+.add-image-edit input:focus,
+.add-image-edit textarea:focus,
+.add-image-edit select:focus {
+  outline: 0;
+  background: #fef2de;
+}
+.add-image-edit textarea {
+  width: 100%;
+}
+.add-image-edit input:last-of-type {
+  width: 100%;
+}
+.add-image-edit button {
+  width: 100%;
+  height: 2rem;
+  border: 0;
+}

@@ -27,21 +27,16 @@ class Image extends Component {
   }
 
   render() {
-    const { metadata, _id, uploadDate } = this.props.details;
-
+    const { DeleteImage, id } = this.props;
+    const { metadata, uploadDate } = this.props.details;
     const { isAuthenticated } = this.props.auth;
-
-    const imageDelete = e => {
-      e.preventDefault();
-      this.props.DeleteImage(_id);
-    };
 
     const showCard = (
       <li className="image-card">
         <div className="image-created">{uploadDate}</div>
         <img
           className="image-src"
-          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${this.props.id || _id}`}
+          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${this.props.id}`}
           alt="one face"
           onClick={this.cardOrImage.bind(this)}
           // data-tilt
@@ -50,7 +45,7 @@ class Image extends Component {
           {metadata.image_name ? metadata.image_name.toUpperCase() : 'no title'}
         </h3>
         <div className="image-description">{metadata.description}</div>
-        {isAuthenticated() && <button onClick={imageDelete}>Delete</button>}
+        {isAuthenticated() && <button onClick={() => DeleteImage(id)}>Delete</button>}
       </li>
     );
 
@@ -67,12 +62,13 @@ class Image extends Component {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: '#222',
+          zIndex: 10,
         }}
       >
         <img
           className="image-src"
           onClick={this.cardOrImage.bind(this)}
-          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${this.props.id || _id}`}
+          src={`https://obscure-beyond-35921.herokuapp.com/images/show/${this.props.id}`}
           alt="one face"
           style={{
             minHeight: '95vh'

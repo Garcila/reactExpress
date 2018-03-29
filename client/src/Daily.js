@@ -4,8 +4,8 @@ import Image from './Image';
 import './App.css';
 
 const Daily = props => {
-  const { images } = props;
-  const randomNumber = Math.floor(Math.random() * images.length);
+  const { images, id } = props;
+  // const randomNumber = Math.floor(Math.random() * images.length);
   return (
     <div className="container">
       <h2
@@ -14,26 +14,25 @@ const Daily = props => {
         Welcome to faces. In this page is the image of the day, week or month...
       </h2>
       {images.map((image, index) => {
-        return index === randomNumber ? (
-          <ul key={index} className="list-of-1-image">
+        return image._id === id ? (
+          <div key={image._id} className="list-of-1-image">
             <div
               className="background-blur"
               style={{
-                background: `url('https://obscure-beyond-35921.herokuapp.com/images/show/${props.id ||
-                  image._id}')`,
+                background: `url('https://obscure-beyond-35921.herokuapp.com/images/show/${id || image._id}')`,
                 backgroundSize: 'cover',
                 marginTop: '2.2rem',
                 overflowX: 'hidden'
               }}
             />
             <Image
-              key={index}
+              key={id}
               details={image}
               DeleteImage={props.DeleteImage}
               auth={props.auth}
-              id={props.id}
+              id={id || image._id}
             />
-          </ul>
+          </div>
         ) : (
           ''
         );

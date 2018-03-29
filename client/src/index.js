@@ -1,10 +1,8 @@
 /* eslint-env browser */
-
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route } from 'react-router-dom';
 import App from './App';
-import Secret from './Secret';
 import './index.css';
 
 //========================================
@@ -18,19 +16,22 @@ const handleAuthentication = (nextState, replace) => {
     auth.handleAuthentication();
   }
 };
-//============================================^
 
 const Root = () =>
-  //===========================================================
   <Router history={history} component={App}>
     <div>
-      {/* //============================================= */}
-      <Route exact path="/" render={props => <App auth={auth} {...props} />} />
+      <Route 
+        exact path="/" 
+        render={props => {
+        handleAuthentication(props);
+        return <App auth={auth} 
+        {...props} />;}} 
+      />
       <Route
-        path="/secret"
+        path="/superuser"
         render={props => {
           handleAuthentication(props);
-          return <Secret auth={auth} {...props} />;
+          return <App auth={auth} {...props} />;
         }}
       />
     </div>

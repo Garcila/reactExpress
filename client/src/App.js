@@ -6,10 +6,10 @@ import Header from './common/Header';
 import Nav from '../src/common/Nav';
 import Daily from './Daily';
 import Gallery from './Gallery';
-// import AddImageForm from './AddImageForm';
+import AddImageForm from './AddImageForm';
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super();
 
     this.DeleteImage = this.DeleteImage.bind(this);
@@ -23,56 +23,30 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.updateImages();
   }
 
-  updateImages() {
+  updateImages () {
     axios
-      // .get('http://localhost:3001/images/')
-      .get('https://obscure-beyond-35921.herokuapp.com/images/')
-      .then(images => this.setState({ images: images.data }))
-      .then(this.setState({loading: false}));
+			.get('https://obscure-beyond-35921.herokuapp.com/images/')
+			.then(images =>
+				this.setState({ images: images.data, loading: false })
+			);
   }
 
-  showGallery() {
-    if (this.state.singleImage) {
-      return (
-        this.state.loading ? 
-          <div className="spinner">Drawing Face</div>
-          :
-          <Daily
-            images={this.state.images}
-            DeleteImage={this.DeleteImage}
-            auth={this.props.auth}
-            id={this.state.selectedImageId}
-          />
-      );
-    }
+  viewCard (_id) {
+    this.setState({
+      singleImage: !this.state.singleImage,
+      selectedImageId: _id
+    });
+  }
 
-    return (
-      this.state.loading ?
-      <div className="spinner">Drawing Faces</div>
-      :
-      <Gallery
-        images={this.state.images}
-        DeleteImage={this.DeleteImage}
-        auth={this.props.auth}
-        viewCard={this.viewCard.bind(this)}
-        />
-      );
-    }
+  changeView () {
+    this.setState({ singleImage: !this.state.singleImage });
+  }
 
-    viewCard(id) {
-      this.setState({singleImage: !this.state.singleImage, selectedImageId: id });
-      this.showGallery();
-    }
-    
-    changeView() {
-      this.setState({ singleImage: !this.state.singleImage });
-    }
-
-  AddImage(image) {
+  AddImage (image) {
     let images = image.file_source.files;
 
     for (let i = 0; i < images.length; i++) {
@@ -80,49 +54,83 @@ class App extends Component {
       data.append('fileName', image.file_source.files[i].name);
       data.append('file', image.file_source.files[i]);
       data.append(
-        'title',
-        image.title || image.file_source.files[i].name.split('.', 1)[0]
-      );
+				'title',
+				image.title || image.file_source.files[i].name.split('.', 1)[0]
+			);
       data.append('description', image.description);
       axios
-        // .post('http://localhost:3001/images', data)
-        .post('https://obscure-beyond-35921.herokuapp.com/images/', data)
-        .then(res => {
+				.post(
+					'https://obscure-beyond-35921.herokuapp.com/images/',
+					data
+				)
+				.then(res => {
           this.updateImages();
           console.log('success', res);
         })
-        .catch(err => console.log('failure', err));
+				.catch(err => console.log('failure', err));
     }
   }
 
-  DeleteImage(id) {
+  DeleteImage (id) {
     axios
-      // .delete(`http://localhost:3001/images/${id}`)
-      .delete(`https://obscure-beyond-35921.herokuapp.com/images/${id}`)
-      .then(res => {
+			.delete(`https://obscure-beyond-35921.herokuapp.com/images/${id}`)
+			.then(res => {
         this.updateImages();
         console.log('delete request sent from App axios', id);
       })
-      .catch(err => {
+			.catch(err => {
         console.error(err);
       });
   }
 
-  render() {
+  render () {
+    const random =
+			this.state.images.length > 0 &&
+			this.state.images[
+				Math.floor(Math.random() * this.state.images.length)
+			]._id;
+    const daily = (
+      <Daily
+        images={this.state.images}
+        DeleteImage={this.DeleteImage}
+        auth={this.props.auth}
+        id={
+					this.state.selectedImageId !== 0
+						? this.state.selectedImageId
+						: random
+				}
+			/>
+		);
+    const gallery = (
+      <Gallery
+        images={this.state.images}
+        DeleteImage={this.DeleteImage}
+        auth={this.props.auth}
+        viewCard={this.viewCard.bind(this)}
+			/>
+		);
+    const spinner = <div className='spinner'>Drawing Faces</div>;
+    const { isAuthenticated } = this.props.auth;
+
     return (
-      <div className="App">
+      <div className='App'>
         <Header
           titleMain={'1000 faces...'}
           subtitle={"My family doesn't like"}
-        />
+				/>
         <Nav
           changeView={this.changeView.bind(this)}
-          go={this.state.singleImage ? 'See All Faces' : 'Single Face'}
+          go={
+						this.state.singleImage ? 'See All Faces' : 'Single Face'
+					}
           auth={this.props.auth}
           history={this.props.history}
-        />
-        {this.showGallery()}
-        {/* <AddImageForm AddImage={this.AddImage.bind(this)} /> */}
+				/>
+        {this.state.loading ? spinner : ''}
+        {this.state.singleImage ? daily : gallery}
+        {isAuthenticated() &&
+        <AddImageForm AddImage={this.AddImage.bind(this)} 
+        />}
       </div>
     );
   }
