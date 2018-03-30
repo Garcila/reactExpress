@@ -75,6 +75,29 @@ conn.once('open', () => {
       readstream.pipe(res);
     });
 
+    // update route_____________________________________________
+    // router.get('/images/:_id/edit', (req, res) => {
+    //   const id = req.params._id;
+    //   gfs.exist({ _id: id }, (err, foundImage) => {
+    //     if (err) res.send('Error occurred');
+    //     if (foundImage) {
+    //       // res.send(res);
+    //       res.send(`image with id ${id} was found`);
+    //       gfs.findOne({ _id: id}, function (err, file) {
+    //         { $set: { description: 'el zapato roto' } }
+    //         filename = 'roto roto roto';
+    //         console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',file);
+    //       });
+
+          
+
+
+    //     } else {
+    //       res.send(`Image with id: ${id} not found`);
+    //     }
+    //   });
+    // })
+    
     // Delete route____________________________________________
     router.delete('/images/:_id', (req, res) => {
       const id = req.params._id;
