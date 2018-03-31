@@ -28,7 +28,7 @@ const Root = () =>
         {...props} />;}} 
       />
       <Route
-        path="/superuser"
+        path="/Superuser"
         render={props => {
           handleAuthentication(props);
           return <App auth={auth} {...props} />;

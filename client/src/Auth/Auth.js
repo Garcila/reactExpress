@@ -27,7 +27,7 @@ export default class Auth {
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult);
-                history.replace('superuser');
+                history.replace('Superuser');
             } else if (err) {
                 history.replace('');
                 console.log(err);
